@@ -74,12 +74,6 @@ Save and exit. Verify the rollout:
 kubectl rollout status deploy api-server -n default
 ```
 
-**Why this works**
-
-- Secrets externalize sensitive data from Pod specifications
-- Using `valueFrom.secretKeyRef` injects Secret values as environment variables
-- The Deployment will automatically roll out new Pods with the updated configuration
-
 **Docs**
 
 - Secrets: https://kubernetes.io/docs/concepts/configuration/secret/
@@ -141,13 +135,6 @@ To test immediately, create a Job from the CronJob:
 kubectl create job backup-job-test --from=cronjob/backup-job
 kubectl logs job/backup-job-test
 ```
-
-**Why this works**
-
-- `schedule: "*/30 * * * *"` runs every 30 minutes
-- History limits control how many completed/failed Jobs are retained
-- `activeDeadlineSeconds` sets maximum time a Job can run
-- `restartPolicy: Never` is required for Jobs
 
 **Docs**
 
@@ -235,13 +222,6 @@ kubectl patch pod log-collector -n audit \
 
 If patch fails, delete and recreate.
 
-**Why this works**
-
-- Pod logs reveal the exact permission needed (`list pods`)
-- Role grants the required permissions in the namespace
-- RoleBinding connects the Role to the ServiceAccount
-- ServiceAccount must be set on the Pod for RBAC to apply
-
 **Docs**
 
 - RBAC: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
@@ -301,12 +281,6 @@ kubectl logs metrics-pod -n monitoring
 # Should no longer show authorization errors
 ```
 
-**Why this works**
-
-- Examining existing RoleBindings shows which ServiceAccount has which permissions
-- Changing the Pod's ServiceAccount to one with correct permissions fixes the issue
-- No need to create new resources when existing ones work
-
 **Docs**
 
 - ServiceAccounts: https://kubernetes.io/docs/concepts/security/service-accounts/
@@ -350,13 +324,6 @@ Verify the file was created:
 ```bash
 ls -lh /root/my-app.tar
 ```
-
-**Why this works**
-
-- `podman build` works like `docker build` but uses Podman runtime
-- `podman save` exports the image to a tarball archive
-- `--format oci-archive` creates a standard OCI archive format
-- The saved tarball can be loaded on another system with `podman load`
 
 **Docs**
 
@@ -453,12 +420,6 @@ for i in {1..10}; do
 done
 ```
 
-**Why this works**
-
-- Both Deployments share the `app=webapp` label, so `web-service` selects both
-- 8 v1 replicas + 2 v2 replicas = 80/20 traffic split
-- Service distributes traffic across all matching pods (round-robin by default)
-
 **Docs**
 
 - Deployments: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
@@ -514,13 +475,6 @@ kubectl get pods -n network-demo --show-labels
 kubectl describe networkpolicy allow-frontend-to-backend -n network-demo
 kubectl describe networkpolicy allow-backend-to-db -n network-demo
 ```
-
-**Why this works**
-
-- NetworkPolicies use label selectors to identify source and destination Pods
-- Updating Pod labels to match NetworkPolicy selectors enables the rules
-- Using `kubectl label --overwrite` is faster than editing YAML and recreating
-- Pods don't need to be recreated for label changes to take effect
 
 **Docs**
 
@@ -608,13 +562,6 @@ kubectl rollout status deploy broken-app
 kubectl get pods -l app=myapp
 ```
 
-**Why this works**
-
-- `apps/v1` is the current stable API version for Deployments
-- `apps/v1` requires `spec.selector` field
-- `spec.selector.matchLabels` must match `spec.template.metadata.labels`
-- Once fixed, the Deployment can manage Pods correctly
-
 **Docs**
 
 - Deployments: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
@@ -680,13 +627,6 @@ kubectl get deploy app-v1 -o jsonpath='{.spec.template.spec.containers[0].image}
 # Should show nginx:1.20
 ```
 
-**Why this works**
-
-- `kubectl set image` triggers a rolling update
-- Kubernetes maintains revision history for rollbacks
-- `kubectl rollout undo` reverts to the previous revision
-- Rolling updates ensure zero-downtime deployments
-
 **Docs**
 
 - Rolling Updates: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment
@@ -751,13 +691,6 @@ kubectl describe pod <pod-name> -n default
 # Look for Readiness in Conditions section
 ```
 
-**Why this works**
-
-- Readiness probes determine when a Pod is ready to receive traffic
-- Pods that fail readiness checks are removed from Service endpoints
-- `initialDelaySeconds` gives the container time to start
-- `periodSeconds` sets how often the probe runs
-
 **Docs**
 
 - Readiness Probes: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
@@ -820,13 +753,6 @@ Or describe a pod:
 kubectl describe pod <pod-name> -n default
 ```
 
-**Why this works**
-
-- Pod-level `securityContext.runAsUser` sets the user ID for all containers
-- Container-level `securityContext.capabilities.add` adds Linux capabilities
-- `NET_ADMIN` capability allows network configuration operations
-- Security contexts enhance Pod security and functionality
-
 **Docs**
 
 - Security Context: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -885,12 +811,6 @@ kubectl get endpoints web-svc -n default
 kubectl describe svc web-svc -n default
 ```
 
-**Why this works**
-
-- Service selectors must match Pod labels to create endpoints
-- When selector matches, Kubernetes automatically creates Endpoints
-- Fixed selector allows traffic to reach the correct Pods
-
 **Docs**
 
 - Services: https://kubernetes.io/docs/concepts/services-networking/service/
@@ -935,13 +855,6 @@ kubectl get svc api-nodeport -n default
 kubectl describe svc api-nodeport -n default
 # Note the NodePort port (e.g., 30080)
 ```
-
-**Why this works**
-
-- `NodePort` Service type exposes the service on a port on each node
-- Kubernetes assigns a port in the 30000-32767 range automatically
-- External traffic can access the service via `<node-ip>:<node-port>`
-- Service port 80 maps to container port 9090
 
 **Docs**
 
@@ -993,13 +906,6 @@ Verify:
 kubectl get ingress web-ingress -n default
 kubectl describe ingress web-ingress -n default
 ```
-
-**Why this works**
-
-- `networking.k8s.io/v1` is the stable Ingress API version
-- `pathType: Prefix` matches paths starting with `/`
-- Ingress routes external traffic to internal Services
-- Host-based routing allows multiple services behind one IP
 
 **Docs**
 
@@ -1062,12 +968,6 @@ kubectl apply -f /root/fix-ingress.yaml
 kubectl get ingress api-ingress -n default
 ```
 
-**Why this works**
-
-- Ingress v1 API only accepts `Prefix`, `Exact`, or `ImplementationSpecific` as pathType
-- `Prefix` is the most commonly used value
-- Once fixed, the Ingress resource is accepted by the API server
-
 **Docs**
 
 - Ingress Path Types: https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types
@@ -1077,14 +977,33 @@ kubectl get ingress api-ingress -n default
 <a id="question-16"></a>
 ## Question 16 – Add Resource Requests and Limits to Pod
 
-In namespace `prod`, create a Pod named `resource-pod` with:
-- Image: `nginx:latest`
-- CPU request: `100m`
-- CPU limit: `500m`
-- Memory request: `128Mi`
-- Memory limit: `256Mi`
+In namespace `prod`, a ResourceQuota exists that sets resource limits for the namespace.
+
+Your task:
+1. Check the ResourceQuota for namespace `prod` to see the limits set
+2. Create a Pod named `resource-pod` with:
+   - Image: `nginx:latest`
+   - Set the CPU and memory limits to **half** of the limits set in the ResourceQuota
+   - Set appropriate requests (at least `100m` CPU and `128Mi` memory)
 
 ### Solution
+
+**Step 1 – Check the ResourceQuota**
+
+```bash
+kubectl get quota -n prod
+kubectl describe quota <quota-name> -n prod
+```
+
+For example, if the quota shows:
+- `limits.cpu: "2"`
+- `limits.memory: "4Gi"`
+
+Then half would be:
+- CPU limit: `1` (or `1000m`)
+- Memory limit: `2Gi`
+
+**Step 2 – Create the Pod with half the quota limits**
 
 ```bash
 kubectl apply -f - <<EOF
@@ -1102,27 +1021,18 @@ spec:
           cpu: "100m"
           memory: "128Mi"
         limits:
-          cpu: "500m"
-          memory: "256Mi"
+          cpu: "1"
+          memory: "2Gi"
 EOF
 ```
 
-Verify:
+**Note:** Adjust the limit values (`cpu: "1"`, `memory: "2Gi"`) based on what you found in the ResourceQuota. If quota shows `limits.cpu: "4"`, use `cpu: "2"`. If quota shows `limits.memory: "8Gi"`, use `memory: "4Gi"`.
 
-```bash
-kubectl get pod resource-pod -n prod -o yaml | grep -A 10 resources
-kubectl describe pod resource-pod -n prod
-```
 
-**Why this works**
-
-- Resource requests help Kubernetes schedule Pods to nodes with available resources
-- Resource limits prevent a Pod from consuming excessive resources
-- CPU in millicores (1000m = 1 core)
-- Memory in binary (Mi, Gi) or decimal (M, G) units
 
 **Docs**
 
+- ResourceQuota: https://kubernetes.io/docs/concepts/policy/resource-quotas/
 - Resource Management: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 
 ---
@@ -1149,4 +1059,5 @@ This practice exam covers the core CKAD topics you'll encounter:
 - Practice time management - flag difficult questions and move on
 
 Good luck with your CKAD exam!
+
 
