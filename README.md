@@ -10,6 +10,18 @@
 
 ---
 
+## 🤝 Community Integrations
+
+I am excited to see these questions being used to help the community! These practice scenarios have been integrated into the following interactive platforms for a more realistic exam experience:
+
+| Integration | Source Repository | Author |
+| :--- | :--- | :--- |
+| 🐸 **ckad-dojo (Simulation 4)** | [TiPunchLabs/ckad-dojo](https://github.com/TiPunchLabs/ckad-dojo) | [@xgueret](https://github.com/xgueret) |
+
+> **Note:** The `ckad-dojo` integration (Dojo Kappa) provides a live terminal, a 120-minute timer, and automated scoring to simulate the actual exam environment.
+
+---
+
 ## Table of Contents
 
 - [Question 1 – Create Secret from Hardcoded Variables](#question-1)
