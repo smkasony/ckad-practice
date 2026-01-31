@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q6 - Canary deployment (manual split)",
+  "description": "Scale an existing Deployment and add a canary Deployment so a Service selects both",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Create canary and split traffic",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

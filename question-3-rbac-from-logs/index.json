@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q3 - RBAC from logs",
+  "description": "Create ServiceAccount/Role/RoleBinding based on authorization errors in Pod logs",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix RBAC and ServiceAccount",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

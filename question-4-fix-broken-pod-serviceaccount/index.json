@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q4 - Fix broken Pod ServiceAccount",
+  "description": "Identify correct RBAC binding and fix a Pod using the wrong ServiceAccount",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix metrics-pod ServiceAccount",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

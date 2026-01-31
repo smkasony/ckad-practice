@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q5 - Build image and save tarball",
+  "description": "Build a container image from a Dockerfile and export it as a tarball",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Build and export image",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
