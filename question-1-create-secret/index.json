@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q1 - Secret from hardcoded env",
+  "description": "Create a Secret and update an existing Deployment to use valueFrom.secretKeyRef",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Create Secret and update Deployment",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}
