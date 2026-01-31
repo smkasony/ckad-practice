@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Q2 - Create CronJob",
-  "description": "Create a CronJob with schedule, history limits, and job settings",
+  "title": "CKAD Q06 - Canary deployment (manual split)",
+  "description": "Scale an existing Deployment and add a canary Deployment so a Service selects both",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,7 +8,7 @@
     },
     "steps": [
       {
-        "title": "Create the CronJob",
+        "title": "Create canary and split traffic",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       }

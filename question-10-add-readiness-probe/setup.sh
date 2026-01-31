@@ -39,7 +39,10 @@ spec:
     spec:
       containers:
         - name: api
-          image: nginx:1.25
+          image: hashicorp/http-echo:1.0.0
+          args:
+            - -listen=:8080
+            - -text=ready
           ports:
             - containerPort: 8080
 YAML

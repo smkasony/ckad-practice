@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Q9 - Rolling update and rollback",
-  "description": "Perform an image update on a Deployment, then rollback",
+  "title": "CKAD Q08 - Fix broken Deployment YAML",
+  "description": "Repair a broken manifest file and apply it successfully",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,7 +8,7 @@
     },
     "steps": [
       {
-        "title": "Update image then rollback",
+        "title": "Fix and apply manifest",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       }

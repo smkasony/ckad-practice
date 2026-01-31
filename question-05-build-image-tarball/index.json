@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Q7 - Fix NetworkPolicy via labels",
-  "description": "Update Pod labels to satisfy existing NetworkPolicies (do not edit policies)",
+  "title": "CKAD Q05 - Build image and save tarball",
+  "description": "Build a container image from a Dockerfile and export it as a tarball",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,7 +8,7 @@
     },
     "steps": [
       {
-        "title": "Fix Pod labels",
+        "title": "Build and export image",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       }
@@ -18,6 +18,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-1node"
+    "imageid": "ubuntu"
   }
 }

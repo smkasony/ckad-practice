@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Q1 - Secret from hardcoded env",
-  "description": "Create a Secret and update an existing Deployment to use valueFrom.secretKeyRef",
+  "title": "CKAD Q07 - Fix NetworkPolicy via labels",
+  "description": "Update Pod labels to satisfy existing NetworkPolicies (do not edit policies)",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,7 +8,7 @@
     },
     "steps": [
       {
-        "title": "Create Secret and update Deployment",
+        "title": "Fix Pod labels",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       }

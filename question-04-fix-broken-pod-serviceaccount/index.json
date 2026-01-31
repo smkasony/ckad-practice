@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Q5 - Build image and save tarball",
-  "description": "Build a container image from a Dockerfile and export it as a tarball",
+  "title": "CKAD Q04 - Fix broken Pod ServiceAccount",
+  "description": "Identify correct RBAC binding and fix a Pod using the wrong ServiceAccount",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,7 +8,7 @@
     },
     "steps": [
       {
-        "title": "Build and export image",
+        "title": "Fix metrics-pod ServiceAccount",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       }
@@ -18,6 +18,6 @@
     }
   },
   "backend": {
-    "imageid": "ubuntu"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Q6 - Canary deployment (manual split)",
-  "description": "Scale an existing Deployment and add a canary Deployment so a Service selects both",
+  "title": "CKAD Q01 - Secret from hardcoded env",
+  "description": "Create a Secret and update an existing Deployment to use valueFrom.secretKeyRef",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,7 +8,7 @@
     },
     "steps": [
       {
-        "title": "Create canary and split traffic",
+        "title": "Create Secret and update Deployment",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       }

@@ -39,7 +39,9 @@ spec:
     spec:
       containers:
         - name: app
-          image: nginx:1.25
+          image: busybox:1.36
+          command: ["/bin/sh", "-c"]
+          args: ["sleep 3600000"]
 YAML
 
 kubectl rollout status deploy/secure-app -n default --timeout=120s

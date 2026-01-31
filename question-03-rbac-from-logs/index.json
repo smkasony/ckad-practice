@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Q3 - RBAC from logs",
+  "title": "CKAD Q03 - RBAC from logs",
   "description": "Create ServiceAccount/Role/RoleBinding based on authorization errors in Pod logs",
   "details": {
     "intro": {
