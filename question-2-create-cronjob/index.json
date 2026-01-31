@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q2 - Create CronJob",
+  "description": "Create a CronJob with schedule, history limits, and job settings",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the CronJob",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}
