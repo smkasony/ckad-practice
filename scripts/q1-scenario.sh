@@ -39,37 +39,44 @@ kubectl apply -f - <<EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-	name: ${DEPLOY}
-	namespace: ${NS}
-	labels:
-		app: api
+
+  name: ${DEPLOY}
+  namespace: ${NS}
+  labels:
+    app: api
 spec:
-	replicas: 1
-	selector:
-		matchLabels:
-			app: api
-	template:
-		metadata:
-			labels:
-				app: api
-		spec:
-			containers:
-				- name: api
-					image: nginx:1.25-alpine
-					ports:
-						- containerPort: 80
-					env:
-						- name: DB_USER
-							value: "admin"
-						- name: DB_PASS
-							value: "Secret123!"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: nginx:1.25-alpine
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_USER
+              value: "admin"
+            - name: DB_PASS
+              value: "Secret123!"
 EOF
 
 echo "[q1] Waiting for deployment to become ready..."
 kubectl rollout status deploy "${DEPLOY}" -n "${NS}"
 
 echo
-echo "[q1] Scenario ready. Validate the starting state (hardcoded env vars):"
+echo "[q1] Scenario ready. Starting state (hardcoded env vars):"
 echo "  kubectl get deploy ${DEPLOY} -n ${NS} -o jsonpath='{.spec.template.spec.containers[0].env}' ; echo"
 echo "  kubectl get secret ${SECRET} -n ${NS}  # should NOT exist"
+
+echo
+echo "[q1] Your task (CKAD-style):"
+echo "  1) Create secret '${SECRET}' in '${NS}' with keys DB_USER and DB_PASS"
+echo "  2) Update deploy '${DEPLOY}' to use valueFrom.secretKeyRef for both env vars"
+echo "  3) Keep name/namespace unchanged"
 
