@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q15 - Fix Ingress PathType",
+  "description": "Fix an invalid Ingress manifest and apply it",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix and apply the Ingress",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q13 - Create NodePort Service",
+  "description": "Create a NodePort Service selecting an existing Deployment",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Create NodePort Service",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

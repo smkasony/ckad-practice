@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q10 - Add Readiness Probe",
+  "description": "Add an HTTP readiness probe to an existing Deployment",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Add readinessProbe",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

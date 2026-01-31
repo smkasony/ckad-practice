@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q8 - Fix broken Deployment YAML",
+  "description": "Repair a broken manifest file and apply it successfully",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix and apply manifest",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q7 - Fix NetworkPolicy via labels",
+  "description": "Update Pod labels to satisfy existing NetworkPolicies (do not edit policies)",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix Pod labels",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

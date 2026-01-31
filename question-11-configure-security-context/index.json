@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q11 - Security Context",
+  "description": "Configure Pod and container security context on an existing Deployment",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Set runAsUser and add capability",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

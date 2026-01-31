@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Q16 - Resources from Quota",
+  "description": "Create a Pod with requests/limits based on a namespace ResourceQuota",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Create resource-pod",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}
